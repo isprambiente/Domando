@@ -1,7 +1,7 @@
-[![Coverage Status](https://coveralls.io/repos/github/isprambiente/domando/badge.svg?branch=main)](https://coveralls.io/github/isprambiente/domando?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/isprambiente/domando/badge.svg?branch=main)](https://coveralls.io/github/isprambiente/Domando?branch=main)
 [![Inline docs](http://inch-ci.org/github/remote-exec/command-designer.png)](http://inch-ci.org/github/isprambiente/domando)
 [![Yard Docs](http://img.shields.io/badge/yard-docs-blue.svg)](http://rubydoc.info/github/isprambiente/domando/main)
-[![Maintainability](https://api.codeclimate.com/v1/badges/be06f3229dd434cdd732/maintainability)](https://codeclimate.com/github/isprambiente/domando/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/be06f3229dd434cdd732/maintainability)](https://codeclimate.com/github/isprambiente/Domando/maintainability)
 
 # Domande frequenti (FAQ)
 
