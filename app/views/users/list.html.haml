@@ -1,0 +1,8 @@
+= turbo_frame_tag 'users', class: 'rows' do
+  - unless @users.blank?
+    = render @users
+    .columns
+      .column.is-full= "#{pagy_bulma_nav(@pagy)}".html_safe
+  - else
+    .columns
+      .column.is-full.has-text-centered Nessun utente trovato

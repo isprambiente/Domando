@@ -1,0 +1,51 @@
+@media print
+  #manual
+    .pagebreak
+      page-break-before: always
+    table
+      display: table !important
+#manual
+  .manual-menu
+    &.sticky
+      position: sticky
+      top: 30px
+  .manual-body
+    line-height: 2rem
+    h6.title.is-6
+      text-decoration-line: underline
+      text-decoration-style: solid
+    span.icon
+      margin-right: 1rem
+    a, a:link, a:visited, a:hover
+      color: #4a4a4a
+    ul.child
+      margin: 0.5rem auto
+      list-style-type: none
+      &.circle
+        list-style-type: circle
+      &.disc
+        list-style-type: disc
+      li
+        margin-left: 2rem
+        margin-bottom: 0.5rem
+        padding-left: 1rem
+    img
+      border: 1px solid #4a4a4a
+      margin: 1rem auto
+    table
+      width: 100%
+      margin-top: 1rem
+      margin-bottom: 1rem
+      caption
+        text-align: left
+        font-weight: bold
+        padding: .5rem 0
+      th, td
+        border: 1px solid black
+        padding: 0 .5rem
+        &:first-child
+          min-width: 15%
+      thead
+        th
+          background-color: #9CC2E5
+

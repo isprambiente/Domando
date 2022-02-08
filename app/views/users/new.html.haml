@@ -1,0 +1,3 @@
+.container
+  %h2.title.is-2.has-text-centered.is-capitalized= t('new', scope: 'user', default: 'New user')
+  = render 'form', user: @user, tab: @tab

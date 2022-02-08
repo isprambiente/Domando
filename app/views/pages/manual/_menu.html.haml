@@ -1,0 +1,16 @@
+%aside.menu.manual-menu
+  %ul.menu-list
+    %li
+      %a.panel-block{data: {action: 'click->menu#focus', menu_id: 'introduction'}}= fas_icon('fas fa-book', text: t('introduction', scope: 'manual.introduction'))
+    %li
+      %a.panel-block{data: {action: 'click->menu#focus', menu_id: 'requirements'}}= fas_icon('fas fa-laptop', text: t('requirements', scope: 'manual.requirements'))
+      %ul
+        %li
+          %a.panel-block{data: {action: 'click->menu#focus', menu_id: 'introduction_min_requirement'}}= fas_icon('fas fa-laptop', text: t('minimal', scope: 'manual.requirements'))
+        %li
+          %a.panel-block{data: {action: 'click->menu#focus', menu_id: 'introduction_requirement'}}= fas_icon('fas fa-laptop', text: t('recommended', scope: 'manual.requirements'))
+    %li
+      %a.panel-block{data: {action: 'click->menu#focus', menu_id: 'help'}}= fas_icon('fas fa-life-ring', text: t('help', scope: 'manual.help'))
+      %ul
+        %li
+          %a.panel-block{data: {action: 'click->menu#focus', menu_id: 'help_bug'}}= fas_icon(Settings.bug.icon, text: Settings.bug.title)

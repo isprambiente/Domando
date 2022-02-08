@@ -1,0 +1,97 @@
+= form_with model: faq, data: { controller: 'form', turbo_frame: 'yield' } do |f|
+  .form-inputs
+    .field.is-horizontal
+      .field-label
+        %label.label.is-capitalized= f.label :title, class: 'label is-required'
+      .field-body
+        .field
+          .control.is-expanded= f.text_field :title, placeholder: "es: #{@sample.present? ? @sample.title.try(:downcase) : 'nuovo computer'}", class: 'input', required: true
+          %p.help Inserire un testo chiaro e non eccessivamente lungo in modo che sia facilmente identificabile da chi lo cerca
+    .field.is-horizontal
+      .field-label
+        %label.label= f.label :category_list, class: 'label is-required'
+      .field-body
+        .field
+          .control
+            %span.is-fullwidth= f.select :category_list, ActsAsTaggableOn::Tag.all.pluck(:name), {selected: f.object.category_list, default: ''}, {id: "faq_#{f.object.id}_category_list", class: 'slimselect', multiple: true, data: { form_target: 'slimselect', form_addable: true, form_closeOnSelect: false}}
+            %p.help Inserire una o più categorie per questa Faq. Le categorie verranno utilizzate per filtrare le ricerche. Nota: se la categoria è assente nell'elenco visualizzato, scrivilo e poi clicca sul bottone + per aggiungerlo all'elenco.
+    .field.is-horizontal
+      .field-label
+        %label.label.is-capitalized= f.label :content, class: 'label is-required'
+      .field-body
+        .field
+          .control.is-expanded= f.rich_text_area :content, class: 'textarea', rows: '10', required: true
+          %p.help E' possibile inserire sia test che allegati che links. Si consiglia, di dividere bene le istruzioni dai moduli e dalla documentazione.
+    .field.is-horizontal
+      .field-label
+        %label.label.is-capitalized= f.label :structure, class: 'label is-required'
+      .field-body
+        .field
+          .control.is-expanded= f.text_field :structure, class: "input #{'is-static' if current_user.editor?}", readonly: current_user.editor?, value: f.object.structure.presence || current_user.structure, required: true
+          %p.help Indicare il nome della struttura a cui afferisce questa Faq. In futuro, solo gli editor che afferiscono a questa struttura potranno modificare questa faq. Nota bene: è possibile indicare una sola struttura!
+    .field.is-horizontal
+      .field-label
+        %label.label= f.label :visibility, class: 'label'
+      .field-body
+        .field
+          .control
+            %span.is-fullwidth= f.select :visibility, Faq.visibilities.map {|k,v| [t_field(k, 'faq.visibilities'), k] }, {selected: f.object.visibility, default: ''}, {id: "faq_#{f.object.id}_visibility", class: 'slimselect', data: { form_target: 'slimselect' }}
+            %p.help Decidere se rendere questa Faq pubblicamente visibile oppure visibile previa autenticazione oppure visibile esclusivamente alla struttura indicata nell'apposito campo.
+    .field.is-horizontal.my-4
+      .field-label
+        %label.label.is-capitalized= f.label :files, class: 'label is-required'
+        %p.help Allega i file da visualizzare nelle istruzioni rinominandoli preventivamente in modo che i nomi file siano comprensibili
+      .field-body
+        .field.is-horizontal.is-pulled-left
+          .field-label
+            %label.label.is-capitalized= f.label :instructions, class: 'label', value: t_field('instructions', 'faq')
+          .field
+            .control.is-expanded
+              .file
+                .file-label= f.file_field :instructions, class: '', multiple: true
+        .field.is-horizontal.is-pulled-left
+          .field-label
+            %label.label.is-capitalized= f.label :models, class: 'label', value: t_field('models', 'faq')
+          .field
+            .control.is-expanded
+              .file
+                .file-label= f.file_field :models, multiple: true
+        .field.is-horizontal.is-pulled-left
+          .field-label
+            %label.label.is-capitalized= f.label :files, class: 'label', value: t_field('others', 'faq')
+          .field
+            .control.is-expanded
+              .file
+                .file-label= f.file_field :files, multiple: true
+
+    .field.is-horizontal
+      .field-label
+        %label.label= f.label :evidence, class: 'label'
+      .field-body
+        .field
+          = f.check_box :evidence, { id: "#{dom_id(faq)}_evidence", class: 'switch is-success is-unchecked-danger' }, '1', '0'
+          %label.has-text-inside.has-text-white{ for: "#{dom_id(faq)}_evidence" }
+            %span.switch-active{ aria: { hidden: 'true' } }= t('yes')
+            %span.switch-inactive{ aria: { hidden: 'true' } }= t('no')
+    .field.is-horizontal
+      .field-label
+        %label.label= f.label :approve, class: 'label'
+      .field-body
+        .field
+          = f.check_box :approve, { id: "#{dom_id(faq)}_approve", class: 'switch is-success is-unchecked-danger' }, '1', '0'
+          %label.has-text-inside.has-text-white{ for: "#{dom_id(faq)}_approve" }
+            %span.switch-active{ aria: { hidden: 'true' } }= t('yes')
+            %span.switch-inactive{ aria: { hidden: 'true' } }= t('no')
+    .field.is-horizontal
+      .field-label
+        %label.label= f.label :active, class: 'label'
+      .field-body
+        .field
+          = f.check_box :active, { id: "#{dom_id(faq)}_active", class: 'switch is-success is-unchecked-danger' }, '1', '0'
+          %label.has-text-inside.has-text-white{ for: "#{dom_id(faq)}_active" }
+            %span.switch-active{ aria: { hidden: 'true' } }= t('yes')
+            %span.switch-inactive{ aria: { hidden: 'true' } }= t('no')
+  .form-actions
+    .buttons.is-right
+      = f.submit icon: 'save', value: t('save'), class: 'button is-link is-capitalized'
+      = link_to t('cancel'), faqs_path, class: 'button is-danger is-capitalized', data: { turbo_frame: 'yield' }

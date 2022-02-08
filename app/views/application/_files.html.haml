@@ -1,0 +1,19 @@
+.content.mt-4
+  - if faq.instructions.attached?
+    .tags
+      .subtitle.is-6.mb-2.mr-3= t_field 'instructions', 'faq'
+      - faq.instructions.each do |file|
+        %span.tag
+          %a{ href: rails_blob_path(file), download: true, download: file.filename, target: "_blank" }= file.filename
+  - if faq.models.attached?
+    .tags
+      .subtitle.is-6.mb-2.mr-3= t_field 'models', 'faq'
+      - faq.models.each do |file|
+        %span.tag
+          %a{ href: rails_blob_path(file), download: true, download: file.filename, target: "_blank" }= file.filename
+  - if faq.files.attached?
+    .tags
+      .subtitle.is-6.mb-2.mr-3= t_field 'files', 'faq'
+      - faq.files.each do |file|
+        %span.tag
+          %a{ href: rails_blob_path(file), download: true, download: file.filename, target: "_blank" }= file.filename

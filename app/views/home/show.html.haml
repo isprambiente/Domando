@@ -1,0 +1,26 @@
+- if @faq.present?
+  = turbo_frame_tag dom_id(@faq), data: {controller: @view, modal_size: '70%'} do
+    .container
+      %h4.title.is-4.has-text-centered.is-capitalized-first
+        = @faq.title
+        - if user_signed_in? && @view != 'modal'
+          %span.icon
+            - if @user_faq_ids.present? && @user_faq_ids.include?(@faq.id)
+              %a.is-vcentered.tooltip.is-multiline{href: favorite_destroy_home_index_path(id: @faq.id), data: {method: :delete, turbo_method: 'delete', tooltip: t('remove_to_preferite', scope: 'faq', default: 'Remove faq to preferite list')} }
+                %i.fas.fa-star
+            - else
+              %a.is-vcentered.tooltip.is-multiline{href: favorite_create_home_index_path(id: @faq.id), data: {method: :put, turbo_method: 'put', tooltip: t('add_to_preferite', scope: 'faq', default: 'Add faq to preferite list')} }
+                %i.far.fa-star
+      - unless @view == 'modal'
+        .has-text-centered= link_to fas_icon('search', text: t('search')), root_path, class: 'button is-text', data: {turbo_frame: 'yield'}
+      %hr/
+      = @faq.rich_text_content.presence || 'Nessuna descrizione trovata'
+      = render 'files', faq: @faq
+- else
+  .container
+    .message.is-danger
+      .message-body
+        .has-text-centered
+          %h1.title.is-size-5.has-text-danger-dark Spiacente, ma non è stata trovata nessuna faq
+        %p.mt-4
+          Se invece ritieni che questo sia un messaggio errato, ti preghiamo di segnalarcelo seguendo le istruzioni indicate alla pagina dedicata alle segnalazioni seguendo l'icona #{fas_icon 'bug'}

@@ -1,0 +1,30 @@
+!!! 5
+%html.no-js{lang: "#{I18n.locale || I18n.default_locale}"}
+  %head
+    -#
+      %meta{ charset: 'utf-8' }
+    %meta{ 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %meta{ name: 'description', content: "#{Settings.subtitle}" }
+    = favicon_link_tag 'icon'
+    %title #{Settings.title} v#{Settings.app.version} #{(' - ' + Settings.env) if Settings.env.present?}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
+  %body
+    #loader.is-hidden
+      .is-loading
+    .hero.is-fullheight
+      .hero-head
+        %header.no-print
+          = turbo_frame_tag 'nav1', src: Settings.header
+          = render partial: 'nav_3'
+        %turbo-frame#flashes
+        %section.no-print
+          <noscript><div class='callout alert radius'>ATTENZIONE! questo sito richiede le funzioni javascript abilitate per funzionare correttamente.</div></noscript>
+        %section.section{style: "min-height:350px;"}
+          %turbo-frame#yield= yield
+          %turbo-frame#modal.is-hidden= yield
+        .no-print= render partial: 'menu' if user_signed_in?
+        = turbo_frame_tag 'footer', src: Settings.footer

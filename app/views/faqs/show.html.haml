@@ -1,0 +1,5 @@
+= turbo_frame_tag dom_id(@faq), data: {controller: 'modal', modal_size: '50%'} do
+  %h4.subtitle.is-4.has-text-centered= @faq.title
+  %hr/
+  = @faq.rich_text_content
+  = render 'files', faq: @faq

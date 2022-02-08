@@ -1,0 +1,27 @@
+%turbo-frame#menu
+  #menu_col.quickview.is-left
+    %header.quickview-header
+      %p.title.has-text-weight-bold= fas_icon('bars', text: 'Menù' )
+      %span.delete{ data: { dismiss: "quickview", controller: 'menu', menu_id: 'menu_col', action: 'click->menu#close' } }
+    .quickview-body.pt-4
+      .quickview-block
+        %aside.menu
+          %ul.menu-list
+            %li
+              %p.menu-label= fas_icon 'user-cog', text: user_signed_in? ? current_user.label : t('visitor', scope: 'user', default: 'Visitor')
+              %ul.menu-list
+                %li
+                  %a.navbar-item{href: page_path('manual'), data: {turbo_frame: 'yield'}}= fas_icon 'book', text: 'Manuale'
+                %li
+                  %a.navbar-item{href: page_path('notifications'), data: {turbo_frame: 'yield'}}= fas_icon 'bug', text: Settings.bug.title
+                - if current_user.editor? || current_user.admin?
+                  %li
+                    %a.navbar-item{href: faqs_path, data: {turbo_frame: 'yield'}}= fas_icon 'faq-circle', text: t('manage', scope: 'faq', default: 'Manage faqs')
+                  - if current_user.admin?
+                    %li
+                      %a.navbar-item{href: users_path, data: {turbo_frame: 'yield'}}= fas_icon 'users', text: t('manage', scope: 'user', default: 'Manage users')
+      %footer.quickview-footer
+        - if user_signed_in?
+          %a{href: destroy_user_session_path, data: {method: :delete, confirm: "Are you sure?"}}= fas_icon('sign-out-alt', text: t('logout', default: 'Logout'))
+        - else
+          %a{href: new_user_session_path}= fas_icon('sign-in-alt', text: t('login', default: 'Login'))

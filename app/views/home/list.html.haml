@@ -1,0 +1,22 @@
+= turbo_frame_tag 'faqs', class: 'rows' do
+  - unless @faqs.blank?
+    = render partial: 'home/faq', collection: @faqs, as: :faq, locals: {user_faq_ids: @user_faq_ids}
+  - else
+    - if @filters[:text].present?
+      %p.box.mt-2
+        %span.level
+          %span.level-left
+            %span.level-item
+              Nessuna informazione trovata per
+              - if @filters[:text].present?
+                "#{@filters[:text].gsub(/[^\w\s]+/, ' ').remove(/[^\w\s]+/)}"
+              - if @filters[:category].present?
+                = ' e ' if @filters[:text].present?
+                categoria "#{@filters[:category]}"
+          %span.level-right
+            %span.level-item
+              - if can? :propose, Faq
+                = link_to 'proponi', propose_home_index_path(filter: {view: :modal}), class: 'button is-ghost', data: {turbo_frame: 'modal'}
+              - else
+                %a.button.is-ghost{href: new_user_session_path, data: {turbo: 'false'}} collegati e proponi
+    = render 'home/panels', evidences: @evidences, tops: @tops

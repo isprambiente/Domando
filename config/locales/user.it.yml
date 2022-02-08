@@ -1,0 +1,35 @@
+it:
+  activerecord:
+    user:
+      username: Inserire la login utilizzata per connettersi all'applicazione
+    models:
+      user:
+        one: utente
+        other: utenti
+    attributes:
+      user:
+        username: login
+        label: nominativo
+        email: e-mail
+        structure: struttura
+        last_sign_in_at: ultima connessione
+        editor: Gestore
+        admin: amministratore
+        locked?: bloccato
+  user:
+    index: Utenti
+    list: Elenco utenti
+    show: Dettaglio utente
+    new: Aggiungi utente
+    create: Utente creato
+    edit: Modifica utente
+    update: Utente modificato
+    delete: Cancella utente
+    destroy: Utente cancellato
+    unlock: Sblocca utente
+    unlocked: Utente sbloccato
+    manage: Gestisci utenti
+    current_user: Non puoi cancellare te stesso
+    confirmations:
+      disable: Un utente disabilitato non potrà accedere al sistema e tutti gli oggetti, a lui collegati, potrebbero non essere più visualizzabili. Confermi di voler disabilitare questo utente?
+      destroy: Il processo è irreversibile e tutti i record associati a questo utente saranno irrimediabilmente cancellati. Confermi di voler definitivamente cancellare l'utente dal sistema?

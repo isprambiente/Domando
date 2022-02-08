@@ -1,0 +1,46 @@
+it:
+  manual:
+    introduction:
+      introduction: Introduzione
+    requirements:
+      requirements: Requisiti utente
+      minimal: Configurazione minima
+      recommended: Configurazione consigliata
+    definitions:
+      definitions: Definizioni e acronimi
+    roles_and_permissions:
+      roles_and_permissions: Ruoli e permessi
+      roles: Ruoli
+      permissions: Permessi
+    user:
+      user: Pannello utente
+    products:
+      products: Anagrafiche prodotti
+      products_reagenti: Reagenti
+      products_consumabili: Consumabili
+    providers:
+      providers: Anagrafiche fornitori
+    logistics:
+      logistics: Depositi e logistica
+    store:
+      store: Magazzino
+      transfert:
+        transfert: Movimentazione materiale
+      store_product:
+        inventory: Gestione inventario
+        lots: Approvvigionamento di magazzino
+        removing: Storno di materiale non più utilizzabile
+        lots_reagenti: Approvvigionamento REAGENTI
+        lots_consumabili: Approvvigionamento CONSUMABILI
+      cart:
+        cart_requests: Richieste di materiale dal magazzino
+        cart_deployers: Consegna di materiale dal magazzino
+      logistics:
+        logistics: Depositi e logistica
+    notify:
+      notify: Notifiche
+      expiring: Prodotti in scadenza
+      out_of_stock: Prodotti in eaurimento
+    help:
+      help: Supporto
+

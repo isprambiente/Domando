@@ -1,0 +1,45 @@
+= turbo_frame_tag :propose, data: {controller: @view, modal_size: '60%', modal_position: 'center'} do
+  %h3.subtitle.is-3.has-text-centered Proponi
+  .content.has-text-justified.px-6.is-size-6
+    Buongiorno #{@user.label},
+    %br/
+    questa sezione è dedicata alle proposte per domande a cui non riesci a trovare risposta nell'applicativo.
+    %br/
+    Per inviare
+    %b segnalazioni,
+    qualora tu avessi trovato un bug durante la navigazione nel sito, ti chiediamo chiudere e di seguire le istruzioni indicate alla pagina dedicata alle segnalazioni seguendo l'icona #{fas_icon 'bug'}
+    %br/
+    Infine, per
+    %b richiedere assistenza
+    , su problematiche riscontrate negli applicativi o di altro genere,
+    %b devi aprire un ticket.
+  .content.pr-6
+    = form_with scope: :propose, url: proposed_home_index_path, data: {controller: 'form', action: 'submit->form#close'} do |f|
+      = f.hidden_field :author_id, value: @user.id, required: true
+      .form-inputs
+        .field.is-horizontal
+          .field-label
+            %label.label.is-capitalized= f.label :title, t('title', scope: 'propose', default: 'Title'), class: 'label is-required'
+          .field-body
+            .field
+              .control.is-expanded= f.text_field :title, class: 'input', required: true
+              %p.help Inserire un titolo, per questa faq che proponi, chiaro e non eccessivamente lungo in modo che sia facilmente identificabile da chi lo cerca
+        .field.is-horizontal
+          .field-label
+            %label.label.is-capitalized= f.label :text, t('text', scope: 'propose', default: 'Description'), class: 'label'
+          .field-body
+            .field
+              .control.is-expanded= f.text_area :text, row: 10, class: 'textarea has-fixed-size is-small'
+              %p.help Inserire un testo chiaro e non eccessivamente lungo in modo che sia facilmente comprensibile da chi lo dovrà leggere
+        .field.is-horizontal
+          .field-label
+            %label.label= f.label :visibility, t('visibility', scope: 'propose', default: 'Visibility'), class: 'label'
+          .field-body
+            .field
+              .control
+                %span= f.select :visibility, Faq.visibilities.map {|k,v| [t_field(k, 'faq.visibilities'), k] }, {selected: '', default: ''}, {id: "faq_visibility", class: 'slimselect', data: { form_target: 'slimselect' }}
+              %p.help Decidere se rendere questa Faq pubblicamente visibile oppure visibile previa autenticazione oppure visibile esclusivamente alla struttura indicata nell'apposito campo.
+            .field
+              .control= f.text_field :structure, class: 'input disabled', readonly: true, value: current_user.structure
+      .buttons.is-centered.mt-5
+        = f.submit icon: 'save', value: t('send'), class: 'button is-link is-capitalized'

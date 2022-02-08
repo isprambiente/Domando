@@ -1,0 +1,75 @@
+title: Domando
+society: tua_societa
+header: /head.html
+footer: /footer.html
+subtitle: Programma per la gestione delle domande frequenti
+email: supporto.domando@domain.com
+user_data_lib: nil_data
+domain: domain.com
+app:
+  url: https://tuo_sito.domain.com
+  version: 1.0.0
+system:
+  username: System
+  message_timeout: 3000
+auth:
+  devise: :cas_authenticatable
+  url: https://cas.domain.com/cas/
+copyright:
+  title: ISPRA | AGP-INF - Settore Sviluppo
+  link: https://www.isprambiente.gov.it
+bug:
+  icon: bug
+  title: Send a problem faq
+  link: https://tuo_link_per_segnalazione_errori/
+  email: supporto.domando@domain.com
+  confirm: ''
+database:
+  development:
+    database: <database>
+    username: <username>
+    password: <password> # può essere configurata qui o nel file criptato credentials.yml
+    host:     <host>
+    sslmode:  'prefer'
+  test:
+    database: <database>
+    username: <username>
+    password: <password> # può essere configurata qui o nel file criptato credentials.yml
+    host:     <host>
+    sslmode:  'prefer'
+  staging:
+    database: <database>
+    username: <username>
+    password: <password> # può essere configurata qui o nel file criptato credentials.yml
+    host:     <host>
+    sslmode:  'prefer'
+  production:
+    database: <database>
+    username: <username>
+    password: <password> # può essere configurata qui o nel file criptato credentials.yml
+    host:     <host>
+    sslmode:  'prefer'
+api:
+  url: <url_json>
+  username: <username>
+  secret_access_key: <password>
+action_mailer:
+  default_url_option:
+    host: <server_host>
+    protocol: 'https'
+  smtp_settings:
+   address: <url_smtp>
+   port: <port>
+   domain: <domainnme>
+   ssl: <true|false>
+   username: <username>
+   password: <password>
+   sender: <sender>
+faq:
+  categories_on_top: 10
+  max_faqs_in_evidence: 10
+  most_requested: 10
+  visibility:
+    free: 0 # cannot be used as a 'public' key
+    autenticated: 1
+    structure: 2

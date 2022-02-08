@@ -1,0 +1,40 @@
+= turbo_frame_tag dom_id(faq) do
+  .card.mt-2.is-unselectable
+    .card-header
+      %p.card-header-title
+        %a{data: {controller: 'form', action: 'form#toggleVisible', id: "#{dom_id(faq)}_content"}}= faq.title
+      - if user_signed_in?
+        %button.card-header-icon
+          %span.icon
+            - if user_faq_ids.include?(faq.id)
+              %a.is-vcentered.tooltip.is-multiline{href: favorite_destroy_home_index_path(id: faq.id), data: {method: :delete, turbo_method: 'delete', tooltip: t('remove_to_preferite', scope: 'faq', default: 'Remove faq to preferite list')} }
+                %i.fas.fa-star
+            - else
+              %a.is-vcentered.tooltip.is-multiline{href: favorite_create_home_index_path(id: faq.id), data: {method: :put, turbo_method: 'put', tooltip: t('add_to_preferite', scope: 'faq', default: 'Add faq to preferite list')} }
+                %i.far.fa-star
+      %button.card-header-icon
+        %span.icon
+          = link_to fas_icon('external-link-alt'), home_path(id: faq.id, filter: {view: :modal}), data: {turbo_frame: 'modal'}
+    .card-content.is-hidden{id: "#{dom_id(faq)}_content"}
+      - if !faq.evidence? || faq.category_list.present?
+        .level.mb-1
+          .level-left
+            - if !faq.evidence?
+              .level-item
+                .subtitle.mb-2.mr-3{style: 'font-size: 0.8rem;'}= fas_icon('exclamation-circle has-text-danger', text: t_field('evidence', 'faq'))
+          .level-right
+            - if faq.category_list.present?
+              .level-item
+                .subtitle.mb-2.mr-3{style: 'font-size: 0.8rem;'}= faq.category_list
+      - if faq.content.present?
+        .content.has-text-justified.mb-4
+          = faq.content
+      = render 'files', faq: faq
+      .content
+        .level
+          .level-left
+            .level-item.subtitle.mb-2.mr-3{style: 'font-size: 0.8rem;'}
+              %a.pl-0.button.is-text.is-small.has-text-transparent.tooltip{onclick: "javascript: navigator.clipboard.writeText(this.text); alert('Link copiato negli appunti!')", data: {tooltip: 'Clicca per copiare il link'} }= search_by_title_url(text: faq.title.downcase.gsub(' ', '-'))
+          .level-right
+            .level-item
+              .subtitle.mb-2.mr-3{style: 'font-size: 0.8rem;'}= "#{t_field('updated_at', 'faq')} #{l(faq.updated_at, format: :long)}"

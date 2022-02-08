@@ -1,0 +1,45 @@
+it:
+  activerecord:
+    models:
+      faq:
+        one: domanda
+        other: domande
+    attributes:
+      faq:
+        title: Titolo
+        content: Istruzioni
+        structure: Struttura
+        evidence: In evidenza
+        active: Attivo
+        approve: Approvato
+        category_list: Categorie
+        categories: Categorie
+        visibility: Visibilità
+        files: Allegati
+        instructions: Istruzioni operative
+        models: Modelli da compilare
+        others: Altri allegati
+        updated_at: Ultimo aggiornamento
+        visibilities:
+          free: pubblica
+          autenticated: solo autenticati
+          structure: solo per la struttura
+  faq:
+    index: Domande frequenti
+    list: Elenco faq
+    show: Dettaglio faq
+    new: Aggiungi faq
+    create: Faq creata
+    edit: Modifica faq
+    update: Faq modificata
+    delete: Cancella faq
+    destroy: Faq cancellata
+    unlock: Sblocca faq
+    unlocked: Faq sbloccata
+    manage: Gestisci faqs
+    favorite: Faq preferite
+    add_to_preferite: Aggiungi alla lista dei preferiti
+    remove_to_preferite: Rimuovi dalla lista dei preferiti
+    categories_top: Top %{top} categorie
+    confirmations:
+      destroy: Sei sicuro di voler cancellare questa Faq?

@@ -1,0 +1,4 @@
+.container
+  = turbo_frame_tag dom_id(@faq), data: {controller: @view} do
+    %h2.title.is-2.has-text-centered.is-capitalized-first= t('new', scope: 'faq', default: 'New faq')
+    = render 'form', faq: @faq

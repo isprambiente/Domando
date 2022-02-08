@@ -1,0 +1,37 @@
+.columns.mt-6
+  .column
+    %nav.panel
+      %p.panel-heading
+        %span.level
+          %span.level-left
+            %span.level-item In evidenza
+          %span.level-right
+            %span.level-item #{evidences.present? ? evidences.count : '0'}
+      - if evidences.present?
+        - evidences.each do |evidence|
+          %a.panel-block{ href: home_path(id: evidence.id, filter: {view: :modal}), data: {turbo_frame: 'modal'} }
+            .columns.is-vcentered.is-gapless{style: 'width: 100%;'}
+              .column.is-11= evidence.title
+              .column.is-1.is-hidden-mobile
+                .panel-icon.is-hidden-mobile.is-pulled-right.mr-0
+                  %i.fas.fa-external-link-alt{'aria-hidden': 'true'}
+      - else
+        .panel-block Nessuna faq in evidenza
+  .column
+    %nav.panel
+      %p.panel-heading
+        %span.level
+          %span.level-left
+            %span.level-item Le più richieste
+          %span.level-right
+            %span.level-item #{tops.present? ? tops.count : '0'}
+      - if tops.present?
+        - tops.each do |top|
+          %a.panel-block{ href: home_path(id: top.id, filter: {view: :modal}), data: {turbo_frame: 'modal'} }
+            .columns.is-vcentered.is-gapless{style: 'width: 100%;'}
+              .column.is-11= top.title
+              .column.is-1.is-hidden-mobile
+                .panel-icon.is-hidden-mobile.is-pulled-right.mr-0
+                  %i.fas.fa-external-link-alt{'aria-hidden': 'true'}
+      - else
+        .panel-block Nessuna faq trovata

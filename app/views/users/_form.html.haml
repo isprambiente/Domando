@@ -1,0 +1,53 @@
+%turbo-frame#user
+  - if can? :read, User
+    .buttons.is-centered
+      %a.button.is-ghost.is-small-caps{href: users_path, data: {turbo_frame: 'yield'}}= t('list', scope: 'user', default: 'List users')
+  = form_with model: user, data: { turbo_frame: 'yield' } do |f|
+    .form-inputs
+      .field.is-horizontal
+        .field-label
+          %label.label.is-capitalized= f.label :username, class: 'label is-required'
+        .field-body
+          .field
+            .control.is-expanded= f.text_field :username, required: true, placeholder: t('username', scope: 'activerecord.user'), class: 'input'
+      - if user.persisted?
+        .field.is-horizontal
+          .field-label
+            %label.label= f.label :label, class: 'label is-required'
+          .field-body
+            .field
+              .control.is-expanded= f.text_field :label, required: true, placeholder: t('label', scope: 'activerecord.user'), class: 'input'
+        .field.is-horizontal
+          .field-label
+            %label.label= f.label :email, class: 'label is-required'
+          .field-body
+            .field
+              .control.is-expanded= f.text_field :email, required: true, placeholder: t('email', scope: 'activerecord.user'), class: 'input'
+        .field.is-horizontal
+          .field-label
+            %label.label= f.label :structure, class: 'label is-required'
+          .field-body
+            .field
+              .control.is-expanded= f.text_field :structure, required: true, placeholder: t('email', scope: 'activerecord.user'), class: 'input'
+        .field.is-horizontal
+          .field-label
+            %label.label= f.label :editor, class: 'label'
+          .field-body
+            .field
+              = f.check_box :editor, { id: "#{dom_id(user)}_editor", class: 'switch is-success is-unchecked-danger' }, '1', '0'
+              %label.has-text-inside.has-text-white{ for: "#{dom_id(user)}_editor" }
+                %span.switch-active{ aria: { hidden: 'true' } }= t('yes')
+                %span.switch-inactive{ aria: { hidden: 'true' } }= t('no')
+        .field.is-horizontal
+          .field-label
+            %label.label= f.label :admin, class: 'label'
+          .field-body
+            .field
+              = f.check_box :admin, { id: "#{dom_id(user)}_admin", class: 'switch is-success is-unchecked-danger' }, '1', '0'
+              %label.has-text-inside.has-text-white{ for: "#{dom_id(user)}_admin" }
+                %span.switch-active{ aria: { hidden: 'true' } }= t('yes')
+                %span.switch-inactive{ aria: { hidden: 'true' } }= t('no')
+      .form-actions
+        .buttons.is-right
+          = f.submit icon: 'save', value: t('save'), class: 'button is-link is-capitalized'
+          = link_to t('cancel'), users_path, class: 'button is-danger is-capitalized', data: { turbo_frame: 'yield' }

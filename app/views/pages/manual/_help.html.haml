@@ -1,0 +1,5 @@
+%h4.title.is-4.mt-6.mb-3= fas_icon('fas fa-life-ring', text: t('help', scope: 'manual.help'))
+%p.has-text-justify
+  Nel menù è possibile consultare il manuale e il link per segnalare gli errori riscontrati.
+  %ul.child
+    %li.mt-5{id: 'help_bug'}= render partial: 'pages/manual/help/bug'

@@ -1,0 +1,18 @@
+= turbo_frame_tag dom_id(user) do
+  .columns.row
+    .column= user.label
+    .column.is-2= user.username
+    .column.is-2= user.email
+    .column.is-1.has-text-centered= l_long user.last_sign_in_at if user.last_sign_in_at.present?
+    .column.is-1.has-text-centered= fas_icon('check', span_style: 'has-text-success-dark') if user.editor?
+    .column.is-1.has-text-centered= fas_icon('check', span_style: 'has-text-success-dark') if user.admin?
+    .column.is-1.has-text-centered= fas_icon('check', span_style: 'has-text-success-dark') if user.locked?
+    .column.is-1-desktop.is-2-tablet.is-vcentered.is-paddingless
+      .buttons.has-addons.is-right.is-flex-wrap-nowrap
+        = link_to fas_icon('search-plus'), user_path(user), class: 'button is-borderless has-background-trasparent tooltip ', data: { tooltip: t('show', scope: 'user', default: 'Show user'), turbo_frame: 'yield', title: "#{t('show', scope: 'user', default: 'Show user')} #{user.label}" }
+        - if user.locked?
+          = link_to fas_icon('unlock'), unlock_user_path(user), method: :patch, class: 'button is-borderless has-background-trasparent tooltip', data: { tooltip: t('unlock', scope: 'user'), turbo_frame: dom_id(user), turbo_method: 'PATCH' }
+          = link_to fas_icon('trash'), trash_user_path(user), method: :delete, class: 'button is-borderless has-background-trasparent tooltip', data: {icon: 'warning', title: 'ATTENZIONE', confirmation: t('destroy', scope: 'user.confirmations', default: 'Destroy user from system'), tooltip: t('delete', scope: 'user', default: 'Destroy user from system'), turbo_frame: dom_id(user), turbo_method: 'DELETE' }
+        - else
+          = link_to fas_icon('edit'), edit_user_path(user), class: 'button is-borderless has-background-trasparent tooltip ', data: { tooltip: t('edit', scope: 'user', default: 'Edit user'), turbo_frame: 'yield' }
+          = link_to fas_icon('trash'), user_path(user), method: :delete, class: "button is-borderless has-background-trasparent tooltip #{ 'disabled' if user == current_user }", disabled: user == current_user, data: { tooltip: t('delete', scope: 'user', default: 'Delete user'), turbo_frame: dom_id(user), turbo_method: 'DELETE', icon: 'warning', title: 'ATTENZIONE', confirmation: t('disable', scope: 'user.confirmations', default: 'Disable user from system?') }

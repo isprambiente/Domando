@@ -1,0 +1,41 @@
+#nav3
+  .container
+    %nav.navbar{role: 'navigation', aria_label: 'main navigation'}
+      .navbar-brand
+        %a.navbar-item.has-text-weight-bold.is-italic.is-size-5{href: root_path, data: {turbo_frame: 'yield'}}
+          %span.icon
+            %i.fas.fa-search.fa-fw
+          %span D
+          omando
+        %a.button.is-primary.navbar-burger.is-hidden-menu.navbar-item.is-radiusless.is-hidden-desktop.is-textless{ data: { controller: 'menu', action: 'click->menu#open', menu_id: 'menu_col' } }
+          %span.has-background-white{ aria_hidden: 'true' }
+          %span.has-background-white{ aria_hidden: 'true' }
+          %span.has-background-white{ aria_hidden: 'true' }
+      .navbar-menu
+        .navbar-start
+          - if user_signed_in?
+            %a.navbar-item{href: favorite_home_index_path, data: {turbo_frame: 'yield'}}
+              %i.fas.fa-star.mr-2
+              = t('favorite', scope: 'faq', default: 'Favorite faqs')
+        .navbar-end
+          %a.navbar-item.tooltip{href: root_path, data: {turbo_frame: 'yield', tooltip: t('search')}}
+            %i.fas.fa-search.mr-0
+          %a.navbar-item.tooltip{href: page_path('manual'), data: {turbo_frame: 'yield', tooltip: t('manual')}}
+            %i.fas.fa-book.mr-0
+          %a.navbar-item.tooltip.has-tooltip-multiline{href: page_path('notifications'), data: {turbo_frame: 'yield', tooltip: Settings.bug.title}}
+            %i.fas.fa-bug.mr-0
+          - if user_signed_in?
+            - if can?(:manage, Faq) || can?(:manage, User)
+              .navbar-item.has-dropdown.is-hoverable
+                %a.navbar-link= fas_icon 'home', text: user_signed_in? ? current_user.label : t('visitor', scope: 'user', default: 'Visitor')
+                .navbar-dropdown
+                  - if can? :manage, Faq
+                    %a.navbar-item{href: faqs_path, data: {turbo_frame: 'yield'}}= fas_icon 'question-circle', text: t('manage', scope: 'faq', default: 'Manage faqs')
+                  - if can? :manage, User
+                    %a.navbar-item{href: users_path, data: {turbo_frame: 'yield'}}= fas_icon 'users', text: t('manage', scope: 'user', default: 'Manage users')
+                  %hr.navbar-divider
+                  %a.navbar-item{href: destroy_user_session_path(allow_other_host: true), data: {method: :delete, confirm: t('logout_confirm', scope: '', default: "Are you sure?")}}= fas_icon('sign-out-alt', text: t('logout', default: 'Logout'))
+            - else
+              %a.navbar-item{href: destroy_user_session_path(allow_other_host: true), data: {method: :delete, confirm: t('logout_confirm', scope: '', default: "Are you sure?")}}= fas_icon('sign-out-alt', text: t('logout', default: 'Logout'))
+          - else
+            %a.navbar-item{href: new_user_session_path}= fas_icon('sign-in-alt', text: t('login', default: 'Login'))

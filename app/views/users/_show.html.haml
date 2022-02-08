@@ -1,0 +1,30 @@
+.container.is-unselectable
+  - unless @view == 'modal'
+    %h2.title.is-2.has-text-centered.is-capitalized #{t('show')} #{user.label}
+    - if can? :read, User
+      .buttons.is-centered
+        %a.button.is-ghost.is-small-caps{href: users_path, data: {turbo_frame: 'yield'}}= t('list', scope: 'user', default: 'List users')
+  .box.pt-5
+    .buttons.is-right.mb-4= link_to fas_icon('edit', text: t('edit')), edit_user_path(id: user.id), class: 'button is-small tooltip', data: { tooltip: t('edit', scope: 'user', default: 'Edit user'), turbo_frame: 'yield' } if can? :edit, user
+    #user.container{ id: dom_id(user) }
+      .columns
+        .column.is-3.is-capitalized.has-text-weight-bold.has-text-right= t_field 'label', 'user'
+        .column= user.label
+      .columns
+        .column.is-3.is-capitalized.has-text-weight-bold.has-text-right= t_field 'username', 'user'
+        .column= user.username
+      .columns
+        .column.is-3.is-capitalized.has-text-weight-bold.has-text-right= t_field 'email', 'user'
+        .column= user.email
+      .columns
+        .column.is-3.is-capitalized.has-text-weight-bold.has-text-right= t_field 'last_sign_in_at', 'user'
+        .column= l_long(user.last_sign_in_at) || t('never')
+      .columns
+        .column.is-3.is-capitalized.has-text-weight-bold.has-text-right= t_field 'editor', 'user'
+        .column.has-text-weight-bold{class: "has-text-#{user.editor? ? 'success' : 'danger'}"}= t user.editor
+      .columns
+        .column.is-3.is-capitalized.has-text-weight-bold.has-text-right= t_field 'admin', 'user'
+        .column.has-text-weight-bold{class: "has-text-#{user.admin? ? 'success' : 'danger'}"}= t user.admin
+      .columns
+        .column.is-3.is-capitalized.has-text-weight-bold.has-text-right= t_field 'locked?', 'user'
+        .column= t user.locked?

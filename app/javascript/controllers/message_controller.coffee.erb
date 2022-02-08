@@ -1,0 +1,32 @@
+import { Controller } from "@hotwired/stimulus"
+import Swal from 'sweetalert2'
+
+export default class extends Controller
+  @targets = ['text']
+
+  connect: =>
+    if this.hasTextTarget
+      this.send this.textTarget.innerHTML, this.element.dataset.messageStatus || 'success'
+      this.element.outerHTML = ''
+
+  disconnect: =>
+    this.outerHTML = ''
+
+  send: (message, level = 'success', timeout = 2000, toast = true) ->
+    options = {
+      toast: if level == 'error' then false else toast
+      icon: level
+      timerProgressBar: true
+      position: if level == 'error' then 'center' else 'top-end'
+      text: message
+      timer: if level == 'error' then false else timeout
+      showConfirmButton: if level == 'error' then true else false
+      didOpen: (toast) =>
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      showClass:
+        popup: if level == 'error' then '' else 'animate__animated animate__bounceInRight'
+      hideClass:
+        popup: if level == 'error' then '' else 'animate__animated animate__bounceOutRight'
+    }
+    Swal.fire(options)

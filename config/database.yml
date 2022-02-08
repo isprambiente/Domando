@@ -1,0 +1,29 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  schema_search_path: public
+  pool: 5
+
+development:
+  <<: *default
+  database: domando_development
+  username: postgres
+  password: qwerty
+  host: localhost
+  sslmode: prefer
+
+test:
+  <<: *default
+  database: domando_test
+  username: postgres
+  password: qwerty
+  host: localhost
+  sslmode: prefer
+
+production:
+  <<: *default
+  database: domando_production
+  username: postgres
+  password: qwerty
+  host: localhost
+  sslmode: prefer

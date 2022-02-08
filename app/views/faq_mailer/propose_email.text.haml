@@ -1,0 +1,14 @@
+Buongiorno #{@user.label},
+il sistema ti comunica che #{@author.label} ha inviato una richiesta di inserire una nuova faq.
+
+Di seguito un breve riepilogo:
+
+#{t('title', scope: 'activerecord.attributes.faq', default: 'Title')}: #{@propose[:title]}
+#{t('content', scope: 'activerecord.attributes.faq', default: 'Content')}: #{@propose[:text]}
+#{t('visibility', scope: 'activerecord.attributes.faq', default: 'Visibility')}: #{t(@propose[:visibility], scope: 'activerecord.attributes.faq.visibilities', default: @propose[:visibility])}
+#{t('structure', scope: 'activerecord.attributes.faq', default: 'Structure')}: #{@propose[:structure]}
+
+La e-mail è generata automaticamente dal sistema. Si prega di non rispondere a questa e-mail poichè la casella non è gestita e nessuna delle risposte verrà recapitata al mittente e quindi letta.
+
+Distinti saluti,
+#{Settings.title} - #{Settings.subtitle}

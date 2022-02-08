@@ -1,0 +1,15 @@
+.container
+  .columns
+    .column.is-8.is-offset-2
+      = form_with scope: :filter, url: list_home_index_path, method: :get, class: 'mb-2', data: {controller: 'form', turbo_frame: 'faqs'} do |f|
+        %h3.title.is-3.has-text-centered Cosa fare per
+        .field.has-addons
+          .control.has-icons-left.is-expanded
+            = f.search_field :text, value: @filters.present? && @filters[:text].present? ? @filters[:text] : '', class: 'input is-large', placeholder: "es: #{@sample.present? ? @sample.title.try(:downcase) : 'nuovo computer'}", data: {action: 'form#delayedSend'}
+            %span.icon.is-medium.is-left
+              %i.fas.fa-search
+          %p.control
+            %a.button.is-link.is-large{ data: {action: 'form#send'} } Cerca
+        %p.help.mt-3= render 'home/categories', categories: @categories, f: f if @categories.present?
+      = turbo_frame_tag 'faqs', class: 'rows', src: list_home_index_path(filter: @filters) do
+        .loading.has-text-centered= fas_icon 'cog fa-pulse', text: 'Caricamento in corso'

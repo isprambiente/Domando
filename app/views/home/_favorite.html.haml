@@ -1,0 +1,9 @@
+= turbo_frame_tag dom_id(faq) do
+  .columns.row
+    .column.is-2= faq.title
+    .column.has-text-justified= faq.content.to_plain_text
+    .column.is-1= faq.structure
+    .column.is-2= faq.category_list
+    .column.is-1-desktop.is-2-tablet.is-vcentered.is-paddingless
+      .buttons.has-addons.is-right.is-flex-wrap-nowrap
+        = link_to fas_icon('search-plus'), faq_path(id: faq.id, filter: {view: :modal}), class: 'button is-borderless has-background-trasparent tooltip ', data: { tooltip: t('show', scope: 'faq', default: 'Show faq'), turbo_frame: 'modal' }

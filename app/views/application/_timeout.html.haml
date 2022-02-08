@@ -1,0 +1,10 @@
+#timeout.modal.modal-container{ data: { modal_target: 'container', erase: 'false' } }
+  .modal-background
+  .modal-card
+    %header.modal-card-head.has-background-danger
+      %p.modal-card-title.has-text-white
+        %i.fas.fa-exclamation-triangle.mr-3
+        ATTENZIONE
+    %section.modal-card-body
+      La sessione e` scaduta. Ricaricare la pagina per continuare.
+      .buttons.is-centered.mt-5.is-uppercase= link_to t('reload'), root_path, class: 'button is-danger'

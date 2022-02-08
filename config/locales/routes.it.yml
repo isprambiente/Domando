@@ -1,0 +1,26 @@
+it:
+  routes:
+    users: utenti
+    faqs: faqs
+    home: faq
+
+    index: elenco
+    create: crea
+    delete: cancella
+    destroy: distruggi
+    download: scarica
+    favorite: preferiti
+    edit: modifica
+    index: elenco
+    logout: esci
+    new: nuovo
+    show: dettagli
+    update: aggiorna
+    manual: manuale
+    print: stampa
+    printed: stampa
+    list: elenco
+    export: esporta
+    confirm: conferma
+    deny: nega
+    delivery_confirm: conferma_carrello

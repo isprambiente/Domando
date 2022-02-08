@@ -1,0 +1,12 @@
+%turbo-frame#yield
+  #manual.container.is-unselectable{data: {controller: 'menu'}}
+    .has-spaced.px-2.my-4
+      .content.is-large.has-text-centered
+        %h2.title.is-2 Manuale utente
+      .columns.has-text-black
+        .column.is-3-desktop.is-4-tablet.no-print= render partial: 'pages/manual/menu'
+        .column.ml-4
+          %ul.manual-body
+            %li.mt-4{id: 'introduction'}= render partial: 'pages/manual/introduction'
+            %li.mt-4{id: 'requirements'}= render partial: 'pages/manual/requirements'
+            %li.mt-4{id: 'help'}= render partial: 'pages/manual/help'

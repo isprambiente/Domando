@@ -1,0 +1,27 @@
+.container
+  %h2.title.is-2.has-text-centered= t('index', scope: 'user', default: 'List users')
+  .box
+    .level
+      .level-left
+
+      .level-right
+        .level-item= link_to fas_icon('plus', text: t('new', scope: 'user', default: 'New user')), new_user_path, class: 'button box is-link', data: {turbo_frame: 'yield'} if can? :create, User
+        .level-item
+          = form_with scope: :filter, url: list_users_path, method: :get, data: {turbo_frame: 'users'} do |f|
+            %p.control.has-icons-left
+              = f.text_field :text, placeholder: 'Ricerca veloce', class: 'input', data: {controller: 'form', action: "keyup->form#delayedSend"}
+              %span.icon.is-left
+                %i.fas.fa-search{ aria: { hidden: 'true' } }
+    %hr
+    .list
+      .columns.head
+        .column.is-vcentered #{t_field 'label', 'user'}
+        .column.is-2.is-vcentered #{t_field 'username', 'user'}
+        .column.is-2 #{t_field 'email', 'user'}
+        .column.is-1.has-text-centered #{t_field 'last_sign_in_at', 'user'}
+        .column.is-1.has-text-centered #{t_field 'editor', 'user'}
+        .column.is-1.has-text-centered #{t_field 'admin', 'user'}
+        .column.is-1.has-text-centered #{t_field 'locked?', 'user'}
+        .column.is-1
+    = turbo_frame_tag 'users', class: 'rows', src: list_users_path, alt: 'Nessuna riga trovata' do
+      .loading.has-text-centered= fas_icon 'cog fa-pulse', text: 'Caricamento in corso'

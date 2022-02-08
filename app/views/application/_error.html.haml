@@ -1,0 +1,9 @@
+#error.modal.modal-container{ data: { modal_target: 'container', erase: 'false' } }
+  .modal-background
+  .modal-card
+    %header.modal-card-head.has-background-danger
+      %p.modal-card-title.has-text-white
+        %i.fas.fa-exclamation-triangle.mr-3
+        ATTENZIONE
+      %button.delete{ data: { controller: 'modal', action: 'click->modal#close' }, aria: { label: 'close' } }
+    %section.modal-card-body E' stato rilevato un errore di trasmissione, ricaricare la pagina e riprovare.<br/>Se il problema persiste, contattare il supporto tecnico.

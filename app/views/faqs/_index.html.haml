@@ -1,0 +1,28 @@
+.container
+  %h2.title.is-2.has-text-centered= t('index', scope: 'faq', default: 'List faqs')
+  - if current_user.editor?
+    %h5.subtitle.is-5.has-text-centered Puoi gestire solo le Faq appartenenti #{current_user.structure.present? ? "a #{current_user.structure}" : 'alla tua struttura'}
+  .box
+    .level
+      .level-left
+
+      .level-right
+        .level-item= link_to fas_icon('plus', text: t('new', scope: 'faq', default: 'New faq')), new_faq_path, class: 'button box is-link', data: {turbo_frame: 'yield'} if can? :create, Faq
+        .level-item
+          = form_with scope: :filter, url: list_faqs_path, method: :get, data: {turbo_frame: 'faqs'} do |f|
+            %p.control.has-icons-left
+              = f.text_field :text, placeholder: 'Ricerca veloce', class: 'input', data: {controller: 'form', action: "keyup->form#delayedSend"}
+              %span.icon.is-left
+                %i.fas.fa-search{ aria: { hidden: 'true' } }
+    %hr
+    .list
+      .columns.head
+        .column.is-2.is-vcentered #{t_field 'title', 'faq'}
+        .column.is-vcentered #{t_field 'content', 'faq'}
+        .column.is-1 #{t_field 'structure', 'faq'}
+        .column.is-2.has-text-centered #{t_field 'category_list', 'faq'}
+        .column.is-1.has-text-centered #{t_field 'approve', 'faq'}
+        .column.is-1.has-text-centered #{t_field 'active', 'faq'}
+        .column.is-1
+    = turbo_frame_tag 'faqs', class: 'rows', src: list_faqs_path, alt: 'Nessuna riga trovata' do
+      .loading.has-text-centered= fas_icon 'cog fa-pulse', text: 'Caricamento in corso'

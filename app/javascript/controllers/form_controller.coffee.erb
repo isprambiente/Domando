@@ -1,0 +1,83 @@
+import { Controller } from "@hotwired/stimulus"
+import Rails from '@rails/ujs'
+import Timeout from 'smart-timeout'
+import SlimSelect from 'slim-select'
+import Swal from 'sweetalert2'
+
+export default class extends Controller
+  @targets = ['form', 'slimselect']
+
+  connect: =>
+    # Per disattivare l'evento click dei bottoni dopo il passaggio a Bulma
+    # che non ha la gestione eventi via Javascript
+    document.querySelectorAll('[disabled]').forEach (obj) ->
+      obj.classList.add('is-disabled')
+    if this.hasSlimselectTarget
+      this.slimselectTargets.forEach (slim) =>
+        this.slimSelect slim
+
+  send: (event) =>
+    Rails.fire(event.target.closest('form'), 'submit')
+
+  delayedSend: (event) =>
+    if  Timeout.exists('textDelay')
+      Timeout.set( 'textDelay', true )
+    Timeout.set('textDelay', (() => this.send(event)), 750)
+
+  reset: (event) =>
+    Rails.fire(event.target.closest('form'), 'reset')
+
+  close: (event) =>
+    Swal.close()
+
+  toggleTagActive: (event) =>
+    tags_container = event.target.closest('.field')
+    tags = tags_container.querySelectorAll('.tag')
+    tags.forEach (tag) =>
+      if event.target.dataset.type != 'reset'
+        tag.classList.remove('is-info')
+    if event.target.dataset.type != 'reset'
+      event.target.closest('.tag').classList.add('is-info')
+      if tags[tags.length - 1].dataset.type == 'reset'
+        tags[tags.length - 1].classList.remove('is-hidden')
+
+  desactiveTagFilter: (event) =>
+    tags_container = event.target.closest('.field')
+    tags = tags_container.querySelectorAll('.tag')
+    tags.forEach (tag) =>
+      tag.classList.remove('is-info')
+    if tags[tags.length - 1].dataset.type == 'reset'
+      tags[tags.length - 1].classList.add('is-hidden')
+
+  toggleVisible: (event) =>
+    document.getElementById(event.currentTarget.dataset.id).classList.toggle('is-hidden')
+    if event.currentTarget.querySelector('i.fas')
+      event.currentTarget.querySelector('i.fas').classList.toggle('fa-chevron-down')
+
+  slimSelect: (select) ->
+    if select.dataset.formAddable == 'true'
+      new SlimSelect
+        addToBody: true,
+        select: "##{select.id}",
+        searchingText: 'Ricerca in corso...',
+        searchText: 'Nessun record trovato',
+        searchPlaceholder: 'Cerca',
+        placeholder: 'Seleziona uno o più valori',
+        text: 'Seleziona uno o più valori',
+        closeOnSelect: if select.dataset.formCloseonselect == 'true' then true else false
+        addable: (value) =>
+          displayData = []
+          if value == ''
+            this.send 'Inserire un valore prima di cliccare sul bottone', 'error'
+          else
+            return value
+    else
+      new SlimSelect
+        addToBody: true,
+        select: "##{select.id}",
+        searchingText: 'Ricerca in corso...',
+        searchText: 'Nessun record trovato',
+        searchPlaceholder: 'Cerca',
+        placeholder: 'Seleziona uno o più valori',
+        text: 'Seleziona uno o più valori'
+

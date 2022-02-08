@@ -1,0 +1,36 @@
+it:
+  'yes': 'Si'
+  'no': 'No'
+  'true': 'Si'
+  'false': 'No'
+  close: 'Chiudi'
+  all:
+    one: tutto
+    other: tutti
+  index: elenco
+  search: Cerca
+  new: nuovo
+  create: crea
+  insert: inserisci
+  show: dettaglio
+  edit: modifica
+  delete: cancella
+  destroy: rimuovi
+  save: salva
+  cancel: annulla
+  never: mai
+  structure: struttura
+  store: magazzino
+  download: scarica
+  send: invia richiesta
+  reload: ricarica
+  login: Accedi
+  logout: Esci
+  logout_confirm: Sei sicuro?
+  is_required: non può essere lasciato in bianco
+  manual: Manuale
+  system:
+    administration: Gestione sistema
+    data: Anagrafiche
+  errors:
+    format: "%{message}"

@@ -1,0 +1,16 @@
+.field.is-grouped.is-grouped-multiline
+  .control
+    .subtitle.is-6.mb-2.mr-3= t('categories_top', scope: 'faq', default: 'Top categories', top: Settings.faq.categories_on_top)
+  - categories.each do |category|
+    .control
+      .tags.has-addons
+        %span.tag.is-dark
+          %label.radio
+            = f.radio_button :category, category.name, data: {action: 'click->form#send click->form#toggleTagActive'}, class: 'is-hidden'
+            = category.name
+        %span.tag.is-link= @faqs.tagged_with(category.name).count
+  .control
+    %span.tag.is-danger.is-hidden.is-pulled-right{data: {type: 'reset'}}
+      %label.radio
+        = f.radio_button :category, '', data: {type: 'reset', action: 'click->form#send click->form#desactiveTagFilter'}, class: 'is-hidden'
+        = t 'delete', scope: '', default: 'remove'

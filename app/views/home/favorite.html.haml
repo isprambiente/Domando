@@ -1,0 +1,15 @@
+.container
+  %h2.title.is-2.has-text-centered= t('favorite', scope: 'faq', default: 'Favorite faqs')
+  .level
+    .level-left
+
+    .level-right
+      .level-item
+        = form_with scope: :filter, url: list_favorite_home_index_path, method: :get, data: {turbo_frame: 'faqs'} do |f|
+          %p.control.has-icons-left
+            = f.text_field :text, placeholder: 'Ricerca veloce', class: 'input', data: {controller: 'form', action: "keyup->form#delayedSend"}
+            %span.icon.is-left
+              %i.fas.fa-search{ aria: { hidden: 'true' } }
+  %hr
+  = turbo_frame_tag 'faqs', class: 'rows', src: list_favorite_home_index_path, alt: 'Nessuna riga trovata' do
+    .loading.has-text-centered= fas_icon 'cog fa-pulse', text: 'Caricamento in corso'

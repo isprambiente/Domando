@@ -1,0 +1,3 @@
+#user.container
+  %h2.title.is-2.has-text-centered.is-capitalized #{t('edit')} #{@user.label}
+  %turbo-frame#user= render 'form', user: @user, tab: @tab
