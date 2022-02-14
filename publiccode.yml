@@ -16,46 +16,81 @@ description:
     genericName: Domande frequenti
     longDescription: |
       Il programma, interamente sviluppato all'interno del settore Sviluppo di
+
+
       AGP-INF, permette di gestire le "domande frequenti (faq)"; più
+
+
       esattamente, le faq sono una serie di risposte alle domande che vengono
+
+
       poste più frequentemente dai dipendenti e/o dai visitatori.
+
+
 
       Nello specifico il sistema, rilasciato in riuso, permette:
 
+
+
       - Ricerca delle faq tramite testo libero e/o le categorie; 
+
+
 
       - Visualizzazione delle faq in evidenza; 
 
+
+
       - Visualizzazione delle faq più ricercate; 
 
+
+
       - Possibilità per gli utenti autenticati di inviare proposte di faq da
+
+
       inserire nell'applicativo; 
+
+
 
       - Gestione delle faq per ciascun dipendente con diritti di editor; 
 
+
+
       - Possibilità di generare faq visibili a tutti, visibili solo al personale
+
+
       autenticato oppure visibili solo ai dipendenti assegnati a una specifica
+
+
       struttura; 
+
+
 
       - Gestione degli utenti e dei ruoli; 
 
+
+
       - _Comunicazioni tramite e-mail con i dipendenti;_
+
+
 
       - Autenticazione SingleSignOn su sistema CAS Server;
 
+
+
       - Documentazione applicativa completa(html); 
+
+
 
       - Manuale utente.
     screenshots:
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/search.png'
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/by-tag.png'
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/by-words.png'
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/propose.png'
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/favorite.png'
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/admin/domandos.png'
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/admin/create-faq.png'
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/admin/users.png'
-      - 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/admin/create-user.png'
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/search.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/favorite.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/propose.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/admin/create-faq.png
     shortDescription: Applicazione per la gestione delle domande frequenti (FAQ)
 developmentStatus: stable
 inputTypes:
@@ -107,4 +142,3 @@ softwareVersion: 1.0.0
 url: 'https://github.com/isprambiente/domando.git'
 usedBy:
   - ISPRA
-logo: 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/logo.svg'
