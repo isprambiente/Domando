@@ -106,4 +106,3 @@ softwareVersion: 1.0.0
 url: 'https://github.com/isprambiente/domando.git'
 usedBy:
   - ISPRA
-logo: 'https://raw.githubusercontent.com/isprambiente/domando/main/doc/logo.svg'
