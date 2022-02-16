@@ -10,7 +10,7 @@ categories:
   - office
 description:
   it:
-    documentation: 'https://rubydoc.info/github/isprambiente/Domando/main'
+    documentation: 'https://rubydoc.info/github/isprambiente/Domando'
     features:
       - Domande frequenti (faq)
     genericName: Domande frequenti
