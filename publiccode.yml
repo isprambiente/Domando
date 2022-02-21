@@ -10,7 +10,7 @@ categories:
   - office
 description:
   it:
-    documentation: 'https://rubydoc.info/github/isprambiente/domando/main'
+    documentation: 'https://rubydoc.info/github/isprambiente/Domando'
     features:
       - Domande frequenti (faq)
     genericName: Domande frequenti
@@ -83,14 +83,14 @@ description:
 
       - Manuale utente.
     screenshots:
-      - |-
-        https://raw.githubusercontent.com/isprambiente/domando/master/doc/search.png
-      - |-
-        https://raw.githubusercontent.com/isprambiente/domando/master/doc/favorite.png
-      - |-
-        https://raw.githubusercontent.com/isprambiente/domando/master/doc/propose.png
-      - |-
-        https://raw.githubusercontent.com/isprambiente/domando/master/doc/admin/create-faq.png
+      - doc/search.png
+      - doc/by-tag.png
+      - doc/by-words.png
+      - doc/propose.png
+      - doc/favorite.png
+      - doc/admin/create-faq.png
+      - doc/admin/users.png
+      - doc/admin/create-user.png
     shortDescription: Applicazione per la gestione delle domande frequenti (FAQ)
 developmentStatus: stable
 inputTypes:
