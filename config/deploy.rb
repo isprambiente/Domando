@@ -2,7 +2,7 @@
 lock "~> 3.16.0"
 
 set :application, "domando"
-set :repo_url, "git@github.com:isprambiente/Domando.git"
+set :repo_url, "https://github.com/isprambiente/Domando.git"
 set :deploy_to, '/home/domando'
 set :rvm_ruby_version, '3.1.1@domando'
 
