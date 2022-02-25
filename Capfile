@@ -9,7 +9,7 @@ require 'capistrano/rails'
 # require 'capistrano/rails/migrations'
 require "capistrano/puma"
 install_plugin Capistrano::Puma
-require "whenever/capistrano"
+# require "whenever/capistrano"
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
