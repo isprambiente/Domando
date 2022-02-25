@@ -18,14 +18,8 @@ namespace :deploy do
   task :yarn_install do
     on roles(:web) do
       within release_path do
-        execute("cd #{release_path} && chmod 755 bin/yarn")
-        execute("cd #{release_path} && chmod 755 bin/rails")
-        execute("cd #{release_path} && chmod 755 bin/rake")
-        execute("cd #{release_path} && chmod 755 bin/bundle")
-        execute("cd #{release_path} && chmod 755 bin/dev")
+
         execute("cd #{release_path} && yarn install --silent --no-progress --no-audit --no-optional")
-        execute("cd #{release_path} && ./bin/rails javascript:install:webpack")
-        execute("cd #{release_path} && ./bin/rails css:install:bulma")
       end
     end
   end
