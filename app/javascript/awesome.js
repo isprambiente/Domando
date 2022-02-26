@@ -46,8 +46,7 @@ import {
   faUpload,
   faUser,
   faUserCog,
-  faUsers,
-  faWarningCircle
+  faUsers
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faStar as farFaStar } from '@fortawesome/free-regular-svg-icons'

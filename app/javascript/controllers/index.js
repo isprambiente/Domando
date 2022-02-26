@@ -3,24 +3,15 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
-
-import FormController from "./form_controller.coffee.erb"
-application.register("form", FormController)
-
-import MenuController from "./menu_controller.coffee.erb"
-application.register("menu", MenuController)
-
-import MessageController from "./message_controller.coffee.erb"
-application.register("message", MessageController)
-
-import ModalController from "./modal_controller.coffee.erb"
-application.register("modal", ModalController)
-
 import { AttachmentUpload } from "@rails/actiontext/app/javascript/actiontext/attachment_upload"
+
+import controllers from "./**/*_controller.js"
+controllers.forEach((controller) => {
+  application.register(controller.name, controller.module.default)
+})
 
 addEventListener("trix-attachment-add", event => {
   const { attachment, target } = event
-
   if (attachment.file) {
     const upload = new AttachmentUpload(attachment, target)
     upload.start()

@@ -12,7 +12,8 @@ document.querySelectorAll('[disabled]').forEach(function(obj) {
 });
 
 // Configure Stimulus development experience
-application.debug = true
-window.Stimulus   = application
+application.warning = true
+application.debug   = true
+window.Stimulus     = application
 
 export { application }
