@@ -5,6 +5,7 @@ export default class extends Controller {
   open(event) {
     var menu, menuId;
     menuId = event.target.dataset.menuId;
+    console.log(menuId);
     if (menuId) {
       menu = document.getElementById(menuId);
       if (menu) {

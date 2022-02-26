@@ -8,11 +8,11 @@ export default class extends Controller {
   connect() {
     // Per disattivare l'evento click dei bottoni dopo il passaggio a Bulma
     // che non ha la gestione eventi via Javascript
-    document.querySelectorAll('[disabled]').forEach(function(obj) {
+    document.querySelectorAll('[disabled]').forEach((obj) => {
       return obj.classList.add('is-disabled');
     });
     if (this.hasSlimselectTarget) {
-      return this.slimselectTargets.forEach(function(slim) {
+      return this.slimselectTargets.forEach((slim) => {
         return this.slimSelect(slim);
       });
     }
@@ -26,7 +26,7 @@ export default class extends Controller {
     if (Timeout.exists('textDelay')) {
       Timeout.set('textDelay', true);
     }
-    return Timeout.set('textDelay', (function() {
+    return Timeout.set('textDelay', (() => {
       return this.send(event);
     }), 750);
   }
@@ -86,7 +86,7 @@ export default class extends Controller {
         placeholder: 'Seleziona uno o più valori',
         text: 'Seleziona uno o più valori',
         closeOnSelect: select.dataset.formCloseonselect === 'true' ? true : false,
-        addable: function(value) {
+        addable: (value) => {
           var displayData;
           displayData = [];
           if (value === '') {

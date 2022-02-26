@@ -6,12 +6,12 @@ export default class extends Controller {
   connect() {
     if (this.hasTextTarget) {
       this.send(this.textTarget.innerHTML, this.element.dataset.messageStatus || 'success');
-      this.element.outerHTML = '';
+      return this.element.outerHTML = '';
     }
   }
 
   disconnect() {
-    this.outerHTML = '';
+    return this.outerHTML = '';
   }
 
   send(message, level = 'success', timeout = 2000, toast = true) {
