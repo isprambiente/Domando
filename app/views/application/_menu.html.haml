@@ -11,10 +11,12 @@
               %p.menu-label= fas_icon 'user-cog', text: user_signed_in? ? current_user.label : t('visitor', scope: 'user', default: 'Visitor')
               %ul.menu-list
                 %li
+                  %a.navbar-item{href: root_path, data: {turbo_frame: 'yield'}}= fas_icon 'search', text: t('search')
+                %li
                   %a.navbar-item{href: page_path('manual'), data: {turbo_frame: 'yield'}}= fas_icon 'book', text: 'Manuale'
                 %li
                   %a.navbar-item{href: page_path('notifications'), data: {turbo_frame: 'yield'}}= fas_icon 'bug', text: Settings.bug.title
-                - if current_user.editor? || current_user.admin?
+                - if user_signed_in? && (current_user.editor? || current_user.admin?)
                   %li
                     %a.navbar-item{href: faqs_path, data: {turbo_frame: 'yield'}}= fas_icon 'faq-circle', text: t('manage', scope: 'faq', default: 'Manage faqs')
                   - if current_user.admin?
