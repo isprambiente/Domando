@@ -29,6 +29,6 @@
   },
   "scripts": {
     "build": "node esbuild.config.js",
-    "build:css": "sass ./app/assets/stylesheets/application.bulma.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules --style compressed"
+    "build:css": "sass ./app/assets/stylesheets/application.bulma.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }
