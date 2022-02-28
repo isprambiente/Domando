@@ -1,0 +1,8 @@
+.dialog
+  .container
+    %h1
+      .text-center= "Record non trovato".upcase
+    .body
+      .text-justify
+        Il dato a cui stai tentando di accedere non è disponibile.
+  .footer= link_to fas_icon('rotate-left', text: t('return', scope: 'errors')), root_path, class: 'button warning expanded tiny'

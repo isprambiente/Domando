@@ -20,13 +20,13 @@ class ApplicationController < ActionController::Base
     sign_out_user # Example method that will destroy the user cookies
   end
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    Rails.logger.debug "ActiveRecord::RecordNotFound on #{exception.action} #{exception.subject.inspect}"
+  rescue_from ActiveRecord::RecordNotFound do
+    Rails.logger.debug "ActiveRecord::RecordNotFound"
     record_not_found!
   end
 
-  rescue_from RackCAS::ActiveRecordStore::Session do |exception|
-    Rails.logger.debug "RackCAS::ActiveRecordStore::Session on #{exception.action} #{exception.subject.inspect}"
+  rescue_from RackCAS::ActiveRecordStore::Session do
+    Rails.logger.debug "RackCAS::ActiveRecordStore::Session"
     access_denied!
   end
 
