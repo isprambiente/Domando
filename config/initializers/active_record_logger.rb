@@ -5,4 +5,4 @@ class CacheFreeLogger < ActiveSupport::Logger
   end
 end
 
-ActiveRecord::Base.logger = CacheFreeLogger.new(STDOUT)
+ActiveRecord::Base.logger = CacheFreeLogger.new(STDOUT) if Rails.env.development?
