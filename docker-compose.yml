@@ -2,7 +2,7 @@ version: "3.7"
 services:
 
   postgres:
-    image: postgres:12.1-alpine
+    image: postgres:14.2-alpine
     environment:
       POSTGRES_DB: domando_development
       POSTGRES_USER: domando
