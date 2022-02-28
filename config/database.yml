@@ -22,5 +22,8 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['RAILS_DATABASE_URL'] || Settings.database_url %>
+  database: <%= Settings.database.production.database %>
+  username: <%= Settings.database.production.username %>
+  password: <%= Rails.application.credentials.production_db_password %>
+  host: <%= Settings.database.production.host %>
   sslmode: <%= Settings.database.production.sslmode %>
