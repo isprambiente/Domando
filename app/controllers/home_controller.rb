@@ -4,7 +4,7 @@
 class HomeController < ApplicationController
   include Pagy::Backend
   before_action :authenticate_user!, only: %i[propose propose_send]
-  # load_and_authorize_resource class: Faq
+  load_and_authorize_resource class: Faq
   before_action :set_view, only: %i[propose show]
   before_action :set_faq, only: %i[show favorite_create favorite_destroy]
   before_action :get_user_faqs, only: %i[list favorite_list search_by_title], if: :user_signed_in?
