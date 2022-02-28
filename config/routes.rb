@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :faqs
   get '/notallowed', to: redirect('notallowed.html'), as: :notallowed
   get '/faqs/:text', to: 'home#search' #, constraints: { text: /[^\W]+/ }
-  get '/:text', to: 'home#search_by_title', as: :search_by_title #, constraints: { text: /[^\W]+/ }
+  get '/link/:text', to: 'home#search_by_title', as: :search_by_title #, constraints: { text: /[^\W]+/ }
   localized do
     # Admin's routes
     scope :admin do
