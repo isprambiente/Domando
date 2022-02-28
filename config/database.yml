@@ -22,8 +22,8 @@ test:
 
 production:
   <<: *default
-  database: <%= Rails.application.credentials.production_db_name || Settings.database.production.database %>
-  username: <%= Rails.application.credentials.production_db_username || Settings.database.production.username %>
-  password: <%= Rails.application.credentials.production_db_password || Settings.database.production.password %>
-  host: <%= Rails.application.credentials.production_db_host || Settings.database.production.host %>
+  database: <%= Settings.database.production.database %>
+  username: <%= Settings.database.production.username %>
+  password: <%= Rails.application.credentials.production_db_password %>
+  host: <%= Settings.database.production.host %>
   sslmode: <%= Settings.database.production.sslmode %>
