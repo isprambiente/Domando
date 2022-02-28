@@ -15,8 +15,9 @@ class HomeController < ApplicationController
   # @return [Object] render home/index
   def index
     @categories = ActsAsTaggableOn::Tag.most_used(Settings.faq.categories_on_top)
-    @faqs = Faq.accessible_by(current_ability).actived.approved.tagged_with(@categories, any: true)
-    @sample = Faq.accessible_by(current_ability).actived.approved.find(Faq.accessible_by(current_ability).actived.approved.pluck(:id).sample)
+    faqs = Faq.accessible_by(current_ability).actived.approved
+    @faqs = faqs.tagged_with(@categories, any: true)
+    @sample = faqs.find(faqs.pluck(:id).sample)
   end
 
   # GET /home/list
