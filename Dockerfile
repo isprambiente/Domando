@@ -1,5 +1,5 @@
 # Dockerfile.rails
-FROM ruby:3.0.3-slim AS rails-toolbox
+FROM ruby:3.1.1-slim AS rails-toolbox
 MAINTAINER Marco Spasiano <marco.spasiano@cnr.it>
 
 ARG USER_ID
@@ -8,6 +8,7 @@ ENV INSTALL_PATH /opt/app
 
 RUN addgroup --gid $GROUP_ID user
 RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
+
 
 # add repositories and install dependencies
 RUN set -eux; \
@@ -19,7 +20,6 @@ RUN set -eux; \
     echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" > /etc/apt/sources.list.d/pgdg.list ;\
     apt-get update ;\
     apt-get install -y --no-install-recommends \
-      apt-utils \
       build-essential \
       imagemagick \
       postgresql-client \

@@ -44,10 +44,7 @@ database:
     host:     <host>
     sslmode:  'prefer'
   production:
-    database: <database>
-    username: <username>
-    password: <password> # può essere configurata qui o nel file criptato credentials.yml
-    host:     <host>
+    database_url: 'postgres://myuser:mypass@localhost/somedatabase'
     sslmode:  'prefer'
 api:
   url: <url_json>
