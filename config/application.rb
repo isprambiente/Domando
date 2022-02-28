@@ -14,7 +14,7 @@ module Domando
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.rack_cas.session_store = RackCAS::ActiveRecordStore
-    config.rack_cas.server_url = Settings.auth.url
+    config.rack_cas.server_url = ENV['RAILS_CAS_URL'] || Settings.auth.url
     config.encoding = 'utf-8'
     config.i18n.default_locale = :it
     config.i18n.available_locales = [:it]
