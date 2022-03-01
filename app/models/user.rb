@@ -55,7 +55,6 @@ class User < ApplicationRecord
   before_validation :presequisite
   before_destroy :abort_destroy, unless: :forced?
   validates :username, presence: true, uniqueness: true
-  validates :structure, presence: true
   after_create_commit {UsersCheckJob.perform_now(username: username) unless Rails.env.test?}
 
   # update self with {locked_at} as Time.zone.now
@@ -77,7 +76,7 @@ class User < ApplicationRecord
   private
 
   def presequisite
-    self.label = username if username.blank?
+    self.label = username if label.blank?
   end
 
   # is executed before destroy, add an error to :base and abort the action

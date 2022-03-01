@@ -15,18 +15,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from ActionController::InvalidAuthenticityToken do |exception|
-    Rails.logger.debug "ActionController::InvalidAuthenticityToken on #{exception.action} #{exception.subject.inspect}"
+  rescue_from ActionController::InvalidAuthenticityToken do
+    Rails.logger.debug 'ActionController::InvalidAuthenticityToken'
     sign_out_user # Example method that will destroy the user cookies
   end
 
   rescue_from ActiveRecord::RecordNotFound do
-    Rails.logger.debug "ActiveRecord::RecordNotFound"
+    Rails.logger.debug 'ActiveRecord::RecordNotFound'
     record_not_found!
   end
 
   rescue_from RackCAS::ActiveRecordStore::Session do
-    Rails.logger.debug "RackCAS::ActiveRecordStore::Session"
+    Rails.logger.debug 'RackCAS::ActiveRecordStore::Session'
     access_denied!
   end
 
