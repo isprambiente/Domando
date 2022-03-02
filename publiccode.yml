@@ -135,10 +135,10 @@ platforms:
   - web
   - linux
   - windows
-releaseDate: '2022-01-30'
+releaseDate: '2022-03-20'
 roadmap: 'https://github.com/isprambiente/domando/projects'
 softwareType: standalone/web
-softwareVersion: 1.0.0
+softwareVersion: 1.1.0
 url: 'https://github.com/isprambiente/domando.git'
 usedBy:
   - ISPRA
