@@ -5,5 +5,4 @@ import "./controllers"
 require("@rails/ujs").start()
 require("./awesome.js")
 require("trix")
-
-
+require("@rails/actiontext")

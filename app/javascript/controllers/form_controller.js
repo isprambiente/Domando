@@ -5,6 +5,8 @@ import SlimSelect from 'slim-select';
 import Swal from 'sweetalert2';
 
 export default class extends Controller {
+  static targets = [ 'slimselect' ]
+
   connect() {
     // Per disattivare l'evento click dei bottoni dopo il passaggio a Bulma
     // che non ha la gestione eventi via Javascript
