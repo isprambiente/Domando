@@ -4,7 +4,7 @@ lock "~> 3.16.0"
 set :application, "domando"
 set :repo_url, "https://github.com/isprambiente/Domando.git"
 set :deploy_to, '/home/domando'
-set :rvm_ruby_version, '3.1.1@domando'
+set :rvm_ruby_version, '3.1.2@domando'
 
 set :linked_files, fetch(:linked_files, []).push('config/master.key', 'config/credentials.yml.enc')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/sessions', 'tmp/state', 'vendor/bundle', 'public/system', 'config/settings', 'storage')
