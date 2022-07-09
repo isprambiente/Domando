@@ -9,6 +9,7 @@ domain: domain.com
 app:
   url: https://tuo_sito.domain.com
   version: 1.2.0
+  favicon: ''
 system:
   username: System
   message_timeout: 3000
