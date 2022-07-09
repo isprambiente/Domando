@@ -24,6 +24,6 @@
                       %a.navbar-item{href: users_path, data: {turbo_frame: 'yield'}}= fas_icon 'users', text: t('manage', scope: 'user', default: 'Manage users')
       %footer.quickview-footer
         - if user_signed_in?
-          %a{href: destroy_user_session_path, data: {method: :delete, confirm: "Are you sure?"}}= fas_icon('sign-out-alt', text: t('logout', default: 'Logout'))
+          = button_to fas_icon('sign-out-alt', text: t('logout', default: 'Logout')), destroy_user_session_path, class: '', method: :delete, data: { turbo: false }
         - else
           %a{href: new_user_session_path}= fas_icon('sign-in-alt', text: t('login', default: 'Login'))
