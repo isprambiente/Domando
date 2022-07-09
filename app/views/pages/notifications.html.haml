@@ -2,6 +2,6 @@
   #segnalazioni.container
     .has-spaced.box.px-4.my-4
       %h3.title.is-3.is-medium.has-text-centered= Settings.bug.title
-      %p.content.has-text-justified= Settings.bug.message.presence || "Qualora tu avessi riscontrato un problema tecnico durante la visualizzazione del programma e desideri  segnalarlo ai nostri tecnici, scrivi una email a #{mail_to Settings.bug.email} indicando tutti i riferimenti necessari all'identificazione del problema. Il primo tecnico disponibile cercherà di rispondere al più presto."
+      %p.content.has-text-justified= Settings.bug.message.presence || "Qualora tu avessi riscontrato un problema tecnico durante la visualizzazione del programma e desideri  segnalarlo ai nostri tecnici, scrivi una email a #{mail_to Settings.bug.email} indicando tutti i riferimenti necessari all'identificazione del problema. Il primo tecnico disponibile cercherà di rispondere al più presto.".html_safe
       %p.content.has-text-justified Sarà considerata cosa gradita, se oltre a una descrizione il più dettagliata, fosse allegato uno o più file contenenti l'immagine dell'errore generato, ove chiaramente possibile.
       %p.content.has-text-justified.has-text-weight-bold Le segnalazioni non di natura tecnica relativamente a problematiche non attinenti a bug o a problemi esterni al programma, saranno rimosse e cancellate senza risoluzione della problematica.
