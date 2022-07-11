@@ -4,7 +4,6 @@ server 'faq.intranet.isprambiente.it', user: 'domando', roles: %w[web app db]
 set :deploy_to, '/home/domando/production'
 set :rails_env, 'production'
 set :branch, 'main'
-set :rvm_ruby_version, '3.1.2@domando'
 
 namespace :deploy do
   namespace :check do
