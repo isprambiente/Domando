@@ -1,5 +1,5 @@
 # Dockerfile.rails
-FROM ruby:3.1.1 AS rails-toolbox
+FROM ruby:3.1.2 AS rails-toolbox
 MAINTAINER Marco Spasiano <marco.spasiano@cnr.it>
 
 ARG USER_ID
