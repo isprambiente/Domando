@@ -19,7 +19,7 @@
     "bulma": "^0.9.4",
     "bulma-quickview": "^2.0.0",
     "bulma-switch": "^2.0.0",
-    "esbuild": "^0.14.48",
+    "esbuild": "^0.14.49",
     "esbuild-rails": "^1.0.3",
     "sass": "^1.53.0",
     "slim-select": "^1.27.1",
