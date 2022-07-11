@@ -138,7 +138,7 @@ platforms:
 releaseDate: '2022-07-09'
 roadmap: 'https://github.com/isprambiente/domando/projects'
 softwareType: standalone/web
-softwareVersion: 1.2.0
+softwareVersion: 1.2.1
 url: 'https://github.com/isprambiente/domando.git'
 usedBy:
   - ISPRA
