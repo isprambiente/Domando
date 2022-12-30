@@ -19,13 +19,13 @@
     "bulma": "^0.9.4",
     "bulma-quickview": "^2.0.0",
     "bulma-switch": "^2.0.0",
-    "esbuild": "^0.15.18",
+    "esbuild": "^0.16.12",
     "esbuild-rails": "^1.0.3",
-    "sass": "^1.56.1",
-    "slim-select": "^2.3.0",
+    "sass": "^1.57.1",
+    "slim-select": "^2.3.3",
     "smart-timeout": "^2.7.1",
-    "sweetalert2": "^11.6.15",
-    "trix": "^2.0.3"
+    "sweetalert2": "^11.6.16",
+    "trix": "^2.0.4"
   },
   "scripts": {
     "build": "node esbuild.config.js",
