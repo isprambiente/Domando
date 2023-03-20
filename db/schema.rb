@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_233641) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_01_22_233641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "fuzzystrmatch"
@@ -24,8 +23,8 @@ ActiveRecord::Schema.define(version: 2022_01_22_233641) do
     t.text "body"
     t.string "record_type", null: false
     t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
@@ -34,7 +33,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_233641) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -47,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_233641) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -65,8 +64,8 @@ ActiveRecord::Schema.define(version: 2022_01_22_233641) do
     t.boolean "evidence", default: false, null: false
     t.boolean "active", default: true, null: false
     t.jsonb "metadata"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "visibility", default: 0
     t.index "to_tsvector('english'::regconfig, (title)::text)", name: "title_en_idx", using: :gin
     t.index "to_tsvector('italian'::regconfig, (title)::text)", name: "title_it_idx", using: :gin
@@ -82,21 +81,21 @@ ActiveRecord::Schema.define(version: 2022_01_22_233641) do
     t.string "session_id", null: false
     t.string "cas_ticket"
     t.text "data"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cas_ticket"], name: "index_sessions_on_cas_ticket"
     t.index ["session_id"], name: "index_sessions_on_session_id"
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id"
+    t.bigint "tag_id"
     t.string "taggable_type"
-    t.integer "taggable_id"
+    t.bigint "taggable_id"
     t.string "tagger_type"
-    t.integer "tagger_id"
+    t.bigint "tagger_id"
     t.string "context", limit: 128
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.string "tenant", limit: 128
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
@@ -114,8 +113,8 @@ ActiveRecord::Schema.define(version: 2022_01_22_233641) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
@@ -123,8 +122,8 @@ ActiveRecord::Schema.define(version: 2022_01_22_233641) do
   create_table "user_faqs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "faq_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["faq_id"], name: "index_user_faqs_on_faq_id"
     t.index ["user_id", "faq_id"], name: "index_user_faqs_on_user_id_and_faq_id", unique: true
     t.index ["user_id"], name: "index_user_faqs_on_user_id"
@@ -137,15 +136,15 @@ ActiveRecord::Schema.define(version: 2022_01_22_233641) do
     t.string "structure", default: ""
     t.jsonb "metadata"
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.boolean "editor", default: false
     t.boolean "admin", default: false
-    t.datetime "locked_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "locked_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["admin"], name: "index_users_on_admin"
     t.index ["editor"], name: "index_users_on_editor"
     t.index ["label"], name: "index_users_on_label"
