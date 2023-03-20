@@ -2,7 +2,7 @@
 # metadata file that makes public software easily discoverable.
 # More info at https://github.com/italia/publiccode.yml
 
-publiccodeYmlVersion: '0.2'
+publiccodeYmlVersion: '0.3'
 categories:
   - content-management
   - help-desk
@@ -13,18 +13,21 @@ description:
     documentation: 'https://rubydoc.info/github/isprambiente/Domando'
     features:
       - Domande frequenti (faq)
-    genericName: Domande frequenti
     longDescription: |
       Il programma, interamente sviluppato all'interno del settore Sviluppo di
+
 
 
       AGP-INF, permette di gestire le "domande frequenti (faq)"; più
 
 
+
       esattamente, le faq sono una serie di risposte alle domande che vengono
 
 
+
       poste più frequentemente dai dipendenti e/o dai visitatori.
+
 
 
 
@@ -32,7 +35,9 @@ description:
 
 
 
+
       - Ricerca delle faq tramite testo libero e/o le categorie; 
+
 
 
 
@@ -40,14 +45,18 @@ description:
 
 
 
+
       - Visualizzazione delle faq più ricercate; 
+
 
 
 
       - Possibilità per gli utenti autenticati di inviare proposte di faq da
 
 
+
       inserire nell'applicativo; 
+
 
 
 
@@ -55,13 +64,17 @@ description:
 
 
 
+
       - Possibilità di generare faq visibili a tutti, visibili solo al personale
+
 
 
       autenticato oppure visibili solo ai dipendenti assegnati a una specifica
 
 
+
       struttura; 
+
 
 
 
@@ -69,7 +82,9 @@ description:
 
 
 
+
       - _Comunicazioni tramite e-mail con i dipendenti;_
+
 
 
 
@@ -77,24 +92,32 @@ description:
 
 
 
+
       - Documentazione applicativa completa(html); 
+
 
 
 
       - Manuale utente.
     screenshots:
-      - doc/search.png
-      - doc/by-tag.png
-      - doc/by-words.png
-      - doc/propose.png
-      - doc/favorite.png
-      - doc/admin/create-faq.png
-      - doc/admin/users.png
-      - doc/admin/create-user.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/search.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/by-tag.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/by-words.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/propose.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/favorite.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/admin/create-faq.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/admin/users.png
+      - |-
+        https://raw.githubusercontent.com/isprambiente/domando/master/doc/admin/create-user.png
     shortDescription: Applicazione per la gestione delle domande frequenti (FAQ)
 developmentStatus: stable
-inputTypes:
-  - text/plain
 intendedAudience:
   countries:
     - it
@@ -116,7 +139,7 @@ it:
     codiceIPA: ispra_rm
 legal:
   license: MIT
-  mainCopyrightOwner: 2022 Istituto Superiore per la Protezione e la Ricerca Ambientale
+  mainCopyrightOwner: 2023 Istituto Superiore per la Protezione e la Ricerca Ambientale
   repoOwner: Istituto Superiore per la Protezione e la Ricerca Ambientale
 localisation:
   availableLanguages:
@@ -135,10 +158,10 @@ platforms:
   - web
   - linux
   - windows
-releaseDate: '2022-07-09'
+releaseDate: '2023-03-20'
 roadmap: 'https://github.com/isprambiente/domando/projects'
 softwareType: standalone/web
-softwareVersion: 1.2.1
+softwareVersion: 1.3.0
 url: 'https://github.com/isprambiente/domando.git'
 usedBy:
   - ISPRA
