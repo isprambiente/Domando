@@ -55,7 +55,7 @@ class User < ApplicationRecord
   before_validation :presequisite
   before_destroy :abort_destroy, unless: :forced?
   validates :username, presence: true, uniqueness: true
-  after_create_commit {UsersCheckJob.perform_now(username: username) unless Rails.env.test?}
+  after_create_commit {UsersCheckJob.perform_now(username: username) unless forced? || Rails.env.test?}
 
   # update self with {locked_at} as Time.zone.now
   # @return [Boolean] true if is updated
