@@ -6,7 +6,7 @@
       - if user_signed_in?
         %button.card-header-icon
           %span.icon
-            - if user_faq_ids.include?(faq.id)
+            - if user_faq_ids.present? && user_faq_ids.include?(faq.id)
               %a.is-vcentered.tooltip.is-multiline{href: favorite_destroy_home_index_path(id: faq.id), data: {method: :delete, turbo_method: 'delete', tooltip: t('remove_to_preferite', scope: 'faq', default: 'Remove faq to preferite list')} }
                 %i.fas.fa-star
             - else

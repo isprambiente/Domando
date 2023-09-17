@@ -57,7 +57,6 @@ class FaqsController < ApplicationController
 
   # DELETE /faqs/1 or /faqs/1.json
   def destroy
-
     if @faq.destroy
       flash.now[:success] = 'Cancellazione avvenuta con successo'
       render turbo_stream: [

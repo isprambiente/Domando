@@ -89,11 +89,12 @@ class HomeController < ApplicationController
   def favorite_list
     @filters = filter_params
     @page = params[:page] || 1
-    @faqs = @user.faqs
+    @faqs = @user.faqs.accessible_by(current_ability).actived.approved
     @faqs = @faqs.where("title ilike '%?%'", @filters[:text]) if @filters[:text].present?
     @pagy, @faqs = pagy(@faqs, page: @page, link_extra: "data-turbo-frame='faqs'")
   end
 
+  # POST /faq/1 or /faq/1.json
   def favorite_create
     if UserFaq.create(user_id: current_user.id, faq_id: @faq.id)
       flash.now[:success] = 'Faq aggiunta tra i preferiti!'
@@ -102,23 +103,25 @@ class HomeController < ApplicationController
       flash.now[:success] = 'Si è verificato un errore durante la creazione della Faq nei preferiti!'
     end
     render turbo_stream: [
-        turbo_stream.replace(:flashes, partial: "flashes"),
-        turbo_stream.replace("faq_#{@faq.id}", partial: "home/faq", locals: {faq: @faq, user_faq_ids: @user_faq_ids})
+      turbo_stream.replace(:flashes, partial: "flashes"),
+      turbo_stream.replace("faq_#{@faq.id}", partial: "home/faq", locals: {faq: @faq, user_faq_ids: @user_faq_ids})
     ]
   end
 
-
+  # DELETE /faq/1 or /faq/1.json
   def favorite_destroy
     user_faq = UserFaq.find_by(user_id: current_user.id, faq_id: @faq.id)
-    if user_faq.present? && user_faq.destroy
+    return if user_faq.blank?
+
+    if user_faq.destroy
       flash.now[:success] = 'Faq rimossa dai preferiti!'
       get_user_faqs
     else
-      flash.now[:success] = 'Si è verificato un errore durante la cancellazione della Faq dai preferiti!'
+      flash.now[:error] = 'Si è verificato un errore durante la cancellazione della Faq dai preferiti!'
     end
     render turbo_stream: [
-        turbo_stream.replace(:flashes, partial: "flashes"),
-        turbo_stream.replace("faq_#{@faq.id}", partial: "home/faq", locals: {faq: @faq, user_faq_ids: @user_faq_ids})
+      turbo_stream.replace(:flashes, partial: "flashes"),
+      turbo_stream.replace("faq_#{@faq.id}", partial: "home/faq", locals: {faq: @faq, user_faq_ids: @user_faq_ids})
     ]
   end
 
@@ -147,7 +150,7 @@ class HomeController < ApplicationController
   end
 
   def get_user_faqs
-    @user_faq_ids = current_user.faqs.ids
+    @user_faq_ids = current_user.faqs.accessible_by(current_ability).ids
   end
 
   # Only allow a list of trusted parameters through.
