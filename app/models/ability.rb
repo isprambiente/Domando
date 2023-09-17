@@ -10,7 +10,7 @@ class Ability
     can %i[read list search search_by_title], Faq, approve: true, active: true, visibility: 0
     # can :create, Faq, approve: false
     if user.present?
-      can %i[propose propose_send favorite favorite_list favorite_create favorite_destroy], Faq
+      can %i[propose propose_send favorite favorite_list favorite_create favorite_destroy], Faq, approve: true, active: true
       # Auhenticated user can has all guest ability and can read and list a Faq if this is approved, actived and has a restricted visibility
       can %i[read list], Faq, approve: true, active: true, visibility: 1
       # Auhenticated user can has all guest ability and can read and list a Faq if this is approved, actived and has a restricted visibility for user structure
