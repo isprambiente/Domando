@@ -8,7 +8,7 @@ user_data_lib: nil_data
 domain: domain.com
 app:
   url: https://tuo_sito.domain.com
-  version: 1.3.0
+  version: 1.4.0
   favicon: ''
 system:
   username: System
