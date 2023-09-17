@@ -36,6 +36,6 @@
                   %hr.navbar-divider
                   %a.navbar-item{href: destroy_user_session_path(allow_other_host: true), data: {method: :delete, confirm: t('logout_confirm', scope: '', default: "Are you sure?")}}= fas_icon('sign-out-alt', text: t('logout', default: 'Logout'))
             - else
-              = button_to fas_icon('sign-out-alt', text: t('logout', default: 'Logout')), destroy_user_session_path, class: 'navbar-item', method: :delete, data: { turbo: false }
+              = button_to fas_icon('sign-out-alt', text: t('logout', default: 'Logout')), destroy_user_session_path, class: 'navbar-item px-0', style: 'font-size:1.1rem;', form_class: 'button_to navbar-item', method: :delete, data: { turbo: false }
           - else
             %a.navbar-item{href: new_user_session_path}= fas_icon('sign-in-alt', text: t('login', default: 'Login'))
