@@ -10,10 +10,10 @@
 User.destroy_all
 Faq.destroy_all
 users = [
-  {username: 'admin', label: 'Admin', admin: true, created_at: Time.zone.now, updated_at: Time.zone.now},
-  {username: 'editor', label: 'Editor', editor: true, created_at: Time.zone.now, updated_at: Time.zone.now},
-  {username: 'user', label: 'User', structure: 'Struttura2', created_at: Time.zone.now, updated_at: Time.zone.now},
-  {username: 'user2', label: 'User2', structure: 'Struttura1', created_at: Time.zone.now, updated_at: Time.zone.now}
+  {username: 'admin', label: 'Admin', admin: true, created_at: Time.zone.now, updated_at: Time.zone.now, forced: 'true'},
+  {username: 'editor', label: 'Editor', editor: true, created_at: Time.zone.now, updated_at: Time.zone.now, forced: 'true'},
+  {username: 'user', label: 'User', structure: 'Struttura2', created_at: Time.zone.now, updated_at: Time.zone.now, forced: 'true'},
+  {username: 'user2', label: 'User2', structure: 'Struttura1', created_at: Time.zone.now, updated_at: Time.zone.now, forced: 'true'}
 ]
 faqs = [
   {title: "Richiedere un nuovo computer", approve: true, category_list: ['informatica', 'computer'], structure: 'Struttura1', content: "Per qualsiasi informazione contattare l'ufficio preposto."},
